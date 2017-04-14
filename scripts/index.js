@@ -15,7 +15,11 @@
         if (navigator.connection.type == Connection.NONE) {
             navigator.notification.alert('An internet connection is required to continue');
         } else {
-            window.location = "http://tiemvacxin.vn/";
+            var browser = cordova.InAppBrowser.open('http://tiemvacxin.vn/', '_self', 'location=no,zoom=no,hidden=yes,toolbar=no');
+
+            browser.addEventListener("loadstop", function () {
+                browser.show();
+            });
         }
     };
 
